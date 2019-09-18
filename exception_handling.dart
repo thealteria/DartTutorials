@@ -26,4 +26,24 @@ void main() {
     //finally clause is always executed no matter if there is exception or not
     print("This is finally clause and is always executed");
   }
+
+  print("\nCASE 5");
+  try {
+    deposit(-500);
+  } catch (e) {
+    print(e.errorMessage());
+  }
+}
+
+/**********CUSTOM EXCEPTION**********/
+class DepositException implements Exception {
+  String errorMessage() {
+    return "You can't enter amount less than 0";
+  }
+}
+
+void deposit(int amount) {
+  if (amount < 0) {
+    throw new DepositException();
+  }
 }
